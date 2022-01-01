@@ -1,0 +1,80 @@
+==============================================
+1.) The DRY principle (Don't Repeat Yourself)
+==============================================
+- The DRY principle is stated as "Every piece of knowledge must have a single, unambiguous, authoritative representation within a system". 
+- When the DRY principle is applied successfully, a modification of any single element of a system does not require a change in other logically unrelated elements. 
+- This principle tells that every software engineer should aim to reduce the repetition of information or methods within their work in order to avoid redundancy.
+- This can be achieved by using Inheritance and Composition (for code)
+- This can be achieved by using Database Normalization (for the database)
+
+==============================================
+2.) KISS (Keep It Simple, Stupid) 
+==============================================
+- The KISS principle states that most systems work best if they are kept simpler rather than made complicated; therefore, simplicity should be a key goal in the design, and unnecessary complexity should be avoided. 
+- Try to keep each small piece of software...
+
+==============================================
+3.) YAGNI (You ain't gonna need it)
+==============================================
+- Like KISS principle, YAGNI also aims at avoiding complexity, especially the kind of complexity that arises from adding functionality that you think you may need in the future.
+- It states that you should not introduce things in order to solve a future problem that you don’t have right now. Always implement things when you actually need them. It will help you keep your software lean and simple. It will also save you extra money and effort.
+- Moreover, you may think that you need that functionality in the future. But a lot of times, you may not even need it due to the ever-changing requirements of our software world.
+- “Premature optimization is the root of all evil” - Donald knuth
+
+4.) SOLID Principle
+
+==============================================
+4.1: Single Responsibility Principle (SRP)
+==============================================
+- This principle states that there should never be more than one reason for a class to change. This means that you should design your classes in such a way that each class should have a single purpose.
+- Hence we are moving towards specialization.
+- Hence its increases cohesiveness. ( Reason: All elements in given class structures or modules should have a functional affinity to one another. By clearly defining the class’s responsibility, increases its cohesiveness. )
+
+- Example: An Account class is responsible for managing Current and Saving Account but a CurrentAccount and a SavingAccount classes would be responsible for managing current and saving accounts respectively. Hence both are responsible for single purpose only. 
+
+==============================================
+4.2: Open/Closed Principle (OCP)
+==============================================
+- This principle states that software entities (classes, modules, functions, etc.) should be 
+  - Open for extension
+  - Closed for modification
+- The "open" part says that you should be able to extend existing code in order to introduce new functionality.
+  ( means...change the behavior of a class without modifying it. 
+    We can extend the class’s behavior through composition, interface, and inheritance.)
+- The "closed" part of the rule states that once a module has been developed and tested, the code should only be changed to correct bugs. 
+  ( means...we should strive not to introduce breaking changes to the existing functionality, because that would force us to refactor a lot of existing code and write a whole bunch of tests to make sure that the changes work. )
+
+Example: A PaymentGateway base class contains all basic payment-related properties and methods. This class can be extended by different PaymentGateway classes for different payment gateway vendors to achieve their functionalities. Hence it is open for extension but closed for modification.
+Example: When we use open source library then we do not edit its code. But either we extend it OR we write code by using the library. )
+
+==============================================
+4.3: Liskov Substitution Principle (LSP)
+==============================================
+- Under this software design principle, objects of a superclass should be replaceable with objects of its subclasses, meaning they behave in the same way. 
+  ( It means, functions that use pointers or references to base classes must be able to use objects of derived classes without knowing it. )
+
+Example - Assume that we have an inheritance hierarchy with class Person and class Student where Person is Base class and Student is derived class.
+Wherever we can use Person, we should also be able to use a Student, because the Student is a subclass of the Person.
+
+==============================================
+4.4: Interface Segregation Principle (ISP)
+==============================================
+- This principle states that Clients should not be forced to depend upon interfaces that they don’t use. This means the number of members in the interface that is visible to the dependent class should be minimized.
+- It is best to avoid adding new functionalities or methods to an existing interface. Rather it’s recommended to incorporate a new interface and permit the classes to implement different interfaces based on the need.
+
+Example: 
+- Imagine you have a large Student class with all the methods you need for managing students in your system. Then, you have multiple controllers designed in RESTful fashion, one for each function you need on your website (e.g. StudentExamController, StudentProfileController, StudentActivitiesController, etc.). Now, all these controllers depend on the Student class for handling the respective functionality. Changing something in the Student class can break all of these controllers because they all depend on it.
+- As a solution: Split the Student class into smaller classes with specific interfaces. Once you do that, adjust the controllers so they all depend only on the interfaces they need. This way, you’ll have a clean structure where the client depends only on the methods it uses. Changing something in a certain class will only affect the parts of the system that actually depend on it.
+
+==============================================
+ 4.5: Dependency Inversion Principle (DIP)
+==============================================
+- This principle states that high-level modules should not depend on low-level modules - both should depend on abstractions. 
+- That means Abstractions should be independent of details. But Details should depend on abstractions.
+
+Example: 
+- Looking into your house, you’re using electricity to plug in your laptop, your phone, lamp, etc. They all have a unified interface to get electricity: the socket. The beauty of it is that you don’t need to care about the way the electricity is provided. You simply rely on the fact that you can use it when needed. Now, imagine if instead of depending on the socket as an interface, you had to wire things up every time you needed to charge your phone. In software terms, that’s what we do whenever we depend on concrete implementations: we know too much about how things are implemented which makes it easy to break the system.
+- How to make sure your code follows the Dependency Inversion Principle?: By combining the dependency injection technique with the concept of binding an interface to a concrete implementation, you can make sure you never depend on concrete classes. This will allow you to easily change the implementation of specific parts of the system without breaking it. A good example of this is switching your database driver from SQL to NoSQL. If you depend on the abstract interfaces for accessing the database, you’d be able to easily change the specific implementations and make sure the system works properly.
+
+- It helps us to develop loosely couple code by ensuring that high-level modules depend on abstractions rather than concrete implementations of lower-level modules. 
+- The Dependency Injection pattern is an implementation of this principle.
