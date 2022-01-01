@@ -1,0 +1,30 @@
+What is Monolithic architecture?
+- 
+
+When to use Monoloithic architecture?
+- When the apllication is small-level application. (Not an enterprise one) 
+- When the number of concurrent users are less, as well as, the number of requests per second are less.
+- When you do not expect growth in Customer Base. ( Or if the application is for the internal use)
+- When you develop a prototype OR when you validate the idea in the form of application/software and you expect frequent major changes.
+- When the simple vertical scale can solve your problems.
+- When you do not have enough budget.
+  - If you go for SOA architecture or Micro-service architecture...
+    - You need to maintain multiple instances/VM(s) containing differnt services.  ( For production and Staging environments.)
+    - You need to maintain multiple databases.
+    - You need to deal with the issues like: logging, debugging, transactional, availibility, etc.(Generally happens with any distributed system)    
+    - You need to maintain Docker/Kubernates/any contanierised framework.
+    - Above all require various skill sets, expertise, and relatively a big development team. (Small team might not handle all this.)
+    - Eventually requires more money.
+
+Pros: 
+- Simple to develop
+- Easier debugging and testing
+- Simple to deploy
+
+Cons:
+- Complicated to understand
+- Scalibility issues
+    - Can not scale specific model/feature... we need to scale the whole application.
+    - Vertical scale can solve the problem but till some limit... after that even vertical scalling does not help
+- Need to deply everything even in the case of smaller change
+- Hard to upgrade with new technology.
