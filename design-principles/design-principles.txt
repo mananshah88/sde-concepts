@@ -78,3 +78,10 @@ Example:
 
 - It helps us to develop loosely couple code by ensuring that high-level modules depend on abstractions rather than concrete implementations of lower-level modules. 
 - The Dependency Injection pattern is an implementation of this principle.
+
+==============================================
+ 5: SOC (Separation of concerns)
+==============================================
+- Separation of concerns is a software architecture design pattern/principle for separating an application into distinct sections, so each section addresses a separate concern. 
+- The overall goal of separation of concerns is to establish a well-organized system where each part fulfills a meaningful and intuitive role while maximizing its ability to adapt to change.
+- It is achieved using modularization, encapsulation and arrangement in software layers.
