@@ -1,0 +1,13 @@
+Microservice Architecture
+- 
+
+SOA v/s Microservice
+- 
+
+Pros:
+- 
+- 
+
+Cons:
+- 
+- 

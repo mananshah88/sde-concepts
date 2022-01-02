@@ -1,5 +1,5 @@
 SOA: Service Oriented Architecture
-- Service-Oriented Architecture (SOA) is a style of software design where services are provided to the other components by application components, through a communication protocol over a network. 
+- Service-Oriented Architecture (SOA) is a style of software design where services are provided to the other components by application components, through a communiprotocol over a network. 
 - Its principles are independent of vendors and other technologies. 
  
 Note: 
@@ -10,6 +10,7 @@ Pros:
 - Maintenance is Easy
 - Quality of Code Improved
 - Platform Independence
+- Loosely Coupled
 - Scalablity
 - Reliablity
 - Independent of Other Services
