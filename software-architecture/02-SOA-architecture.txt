@@ -1,0 +1,20 @@
+SOA: Service Oriented Architecture
+- Service-Oriented Architecture (SOA) is a style of software design where services are provided to the other components by application components, through a communication protocol over a network. 
+- Its principles are independent of vendors and other technologies. 
+ 
+Note: 
+- Microservices are a modern interpretation of service-oriented architectures used to build distributed software systems. 
+- Services in a microservice architecture are processes that communicate with each other over the network in order to fulfill a goal.
+
+Pros:
+- Maintenance is Easy
+- Quality of Code Improved
+- Platform Independence
+- Scalablity
+- Reliablity
+- Independent of Other Services
+
+Cons:
+- High Bandwidth Server
+- Extra Overload ( Greater load and increased response time )
+- High Cost
