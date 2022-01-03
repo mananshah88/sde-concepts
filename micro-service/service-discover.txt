@@ -1,0 +1,119 @@
+==========================================================
+ Design Service Discovery 
+==========================================================
+
+Answer: 
+
+- There are two types of service discovery available. Client-side and Server-side service discovery. 
+
+( https://www.nginx.com/blog/service-discovery-in-a-microservices-architecture/ )
+
+
+
+- We can design “Service Discovery” at the different layers...
+
+
+
+1.) At infrastructure Level
+
+- Cloud Service Providers like AWS provide such a service named “AWS Cloud Map”.
+
+- AWS Cloud Map is a cloud resource discovery service. With Cloud Map, you can define custom names for your application resources, and it maintains the updated location of these dynamically changing resources. This increases your application availability because your web service always discovers the most up-to-date locations of its resources. ( https://aws.amazon.com/cloud-map/ )
+
+- Its main features are Service Discovery, Health Checking and it can be easily integrated with Amazon ECS which is helpful in continuous integration and delivery.
+
+- There is a good whitepaper on “Service Discovery on AWS” here: https://docs.aws.amazon.com/whitepapers/latest/microservices-on-aws/service-discovery.html
+
+Ref:
+
+- https://aws.amazon.com/blogs/aws/aws-cloud-map-easily-create-and-maintain-custom-maps-of-your-applications/
+
+- https://aws.amazon.com/blogs/opensource/aws-cloud-map-service-discovery-serverless-applications/
+
+- https://aws.amazon.com/cloud-map/features/
+
+- https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html
+
+
+2.) At Application Level
+
+- For the applications(microservices) developed in Spring Framework, we can implement this with the Spring Cloud. -
+
+
+- 2.1: Spring Cloud Eureka
+
+Client-side service discovery allows services to find and communicate with each other without hard-coding hostname and port. The only ‘fixed point' in such an architecture consists of a service registry with which each service has to register. With Netflix Eureka each client can simultaneously act as a server, to replicate its status to a connected peer. In other words, a client retrieves a list of all connected peers of a service registry and makes all further requests to any other services through a load-balancing algorithm. To be informed about the presence of a client, they have to send a heartbeat signal to the registry.
+
+https://www.baeldung.com/spring-cloud-netflix-eureka
+
+https://medium.com/swlh/spring-cloud-service-discovery-with-eureka-16f32068e5c7
+
+
+Eureka Service vs Eureka server vs Eureka Client vs Eureka Instance
+
+https://stackoverflow.com/questions/36557646/what-is-eureka-service-eureka-client-eureka-instance-and-eureka-server
+
+
+2.2 Spring ZooKeeper
+
+- https://www.baeldung.com/spring-cloud-zookeeper
+
+- https://cloud.spring.io/spring-cloud-zookeeper/reference/html/
+
+
+
+DiscoveryClient vs EurekaClient:
+
+https://stackoverflow.com/questions/31976236/whats-the-difference-between-enableeurekaclient-and-enablediscoveryclient
+
+
+
+Really Good Article on ZooKeeper vs Eureka.
+
+https://medium.com/knerd/eureka-why-you-shouldnt-use-zookeeper-for-service-discovery-4932c5c7e764
+
+
+
+2.3 Consul
+
+- https://cloud.spring.io/spring-cloud-consul/reference/html/#spring-cloud-consul-retry
+
+- https://www.baeldung.com/spring-cloud-consul
+
+
+
+Consul vs Eureka
+
+https://www.consul.io/docs/intro/vs/eureka
+
+
+
+2.4 etcd
+
+- https://technologyconversations.com/2015/09/08/service-discovery-zookeeper-vs-etcd-vs-consul/
+
+
+
+2.5 Really good comparison on different Service Discovery tools
+
+https://developpaper.com/service-discovery-comparison-consult-vs-zookeeper-vs-etcd-vs-eureka/
+
+
+
+3.) At Deployment/Container Level (Docker/Kubernetes)
+
+- https://thenewstack.io/how-does-service-discovery-work-in-kubernetes/
+
+- https://stackoverflow.com/questions/62267722/service-discovery-with-microservices-in-kubernetes 
+
+- https://iximiuz.com/en/posts/service-discovery-in-kubernetes/
+
+
+
+Interesting read:
+
+- https://dzone.com/articles/microservices-with-spring-boot-spring-cloud-gatewa
+
+- https://www.baeldung.com/spring-cloud-kubernetes
+
+- https://dzone.com/articles/deploying-microservices-spring-cloud-vs-kubernetes

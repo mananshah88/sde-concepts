@@ -1,0 +1,85 @@
+==========================================================
+ Load Balancer v/s API Gateway
+==========================================================
+
+AWS ALB:
+
+1.) Load balancer can route the traffic(requests) to IP addresses, EC2 instances, and ECS containers and can invoke Lambda function as well.
+
+While API Gateway is much better integrated with other AWS products like lambdas, S3 buckets, SQS queues, and DynamoDB tables.
+
+
+
+2.) API gateway, let you change requests before they are forwarded to downstream resources and responses from them before they are sent back to the clients. 
+
+In the case of ALB, we can achieve it by using Lambda. ( So, in the case of API gateway can reduce the costs associated with Lambda functions that are used just as simple intermediaries, in addition to improving the overall performance. )
+
+
+
+3.) ALB has a rule-based routing system that supports the path-based approach plus rules based on: HTTP headers, HTTP request methods (GET, POST, etc.), Querystrings, and requester IPs - hostnames.
+
+API Gateway works with a path-based routing, so you can configure which resource will receive incoming requests based on requested URLs.
+
+( Just FYI: ALB has two kinds of algorithms supported... Round Robin (RR) and Least Outstanding Requests (LOR) )
+
+
+
+4.) If you are building an API and want to leverage AuthN/Z, request validation, rate limiting, SDK generation, direct AWS service backend, use #APIGateway.
+
+But if you don’t need the additional features provided by API Gateway, you should think about using ALB instead, since it can be cheaper in many cases.
+
+
+
+5.) Low traffic APIs might be more cost-effective on API Gateway while high-traffic ones can be better on ALB instead.
+
+
+
+6.) ALB integrates with existing web server infrastructure. So if you have an existing codebase it's a lot easier to integrate. 
+
+ApiGateway is a service that integrates nicely with CI/CD pipelines and serverless frameworks.
+
+
+
+7.) Configuring ApiGateway is a lot of work.
+
+While ALB works with almost no effort. 
+
+
+
+8.) API Gateway, allows you to focus on building the application whilst API Gateway takes care of these other parts.
+
+While ALB has a limited set of features.
+
+
+
+9.) For logging, ALB logs are stored in S3 buckets, so the development team needs to download them and index them somewhere else for searching appropriately.  
+
+While API Gateway stores access logs in AWS CloudWatch, the same place as your Serverless functions (Lambdas).
+
+
+
+Ref: 
+
+- https://aws.amazon.com/blogs/aws/api-gateway-update-new-features-simplify-api-development/
+
+- https://dashbird.io/blog/aws-api-gateway-vs-application-load-balancer/
+
+- https://aws.amazon.com/blogs/compute/introducing-custom-authorizers-in-amazon-api-gateway/
+
+- https://stackoverflow.com/questions/63373473/when-to-use-application-load-balancer-over-api-gateway-in-aws
+
+- https://stackoverflow.com/questions/56827263/application-load-balancers-vs-api-gateway
+
+
+
+Interesting Read: 
+
+- https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-to-api.html
+
+- https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html
+
+
+
+Very Nice Article
+
+- https://gabrymartinez.medium.com/stupid-question-of-the-day-what-is-an-api-gateway-and-what-it-has-to-do-with-a-serverless-model-2acee3e3eeba

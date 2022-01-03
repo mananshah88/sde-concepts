@@ -1,0 +1,109 @@
+==========================================================
+ Design Load Balancer
+==========================================================
+
+ There are two types of service load balancers available. Client-side and Server-side load balancer. 
+
+( https://www.tutorialspoint.com/spring_cloud/spring_cloud_load_balancer.htm )
+
+
+
+- We can design “Load Balancer” at the different layers...
+
+
+
+1.) At infrastructure Level
+
+- Cloud Service Providers like AWS provide such a service named “Elastic Load balancer” which is the server-side load balancer.
+
+- It has 3 types: Classic Load Balancer, Network Load Balancer(NLB) works on Layer-4, Application Load Balancer(ALB) works on Layer-7
+
+ALB:
+
+- can route the traffic(requests) to IP addresses, EC2 instances, and ECS containers
+
+- and Can invoke the Lambda function as well.
+
+- can achieve it by use of Lambda function
+
+- It has a rule-based routing system that supports the path-based approach plus rules based on:
+
+  - HTTP headers
+
+  - HTTP request methods (GET, POST, etc.)
+
+  - Query strings
+
+  - Requester IPs and hostnames
+
+Also, ALB has two kinds of algorithms supported... Round Robin and Least Outstanding Requests(LOR)
+
+
+
+2.) At Application Level
+
+- For the applications(microservices) developed in Spring Framework, we can implement this with the Spring Cloud which is the client-side load balancer. Internally it uses Service Discovery - Registry.
+
+- Spring Cloud load balancer (SLB) and Netflix Ribbon are two well-known client-side load balancers.
+
+
+
+2.1: Spring Cloud Balancer (SLB)
+
+- https://spring.io/guides/gs/spring-cloud-loadbalancer/
+
+- https://piotrminkowski.com/2020/05/13/a-deep-dive-into-spring-cloud-load-balancer/
+
+- Annotations used: @LoadBalanced, @LoadBalancerClient
+
+
+
+2.2 Netflix Ribbon
+
+- https://howtodoinjava.com/spring-cloud/spring-boot-ribbon-eureka/
+
+- https://www.baeldung.com/spring-cloud-rest-client-with-netflix-ribbon
+
+- Annotations used: @RibbonClient, @LoadBalanced
+
+
+
+2.3 Feign Client
+
+- It is a declarative REST client that we can use in our Spring Boot applications. Feign helps us a lot when writing web service clients, allowing us to use several helpful annotations to create integrations. (Originally Netflix developed Feign, but as they stopped supporting the library, it is now a community-driven project and is called OpenFeign. In this post, we will simply call it Feign.)
+
+- Feign has built-in support for load balancing. When we used the name as an argument to the @FeignClient annotation, it uses this argument as the client’s name during load balancing. This name is used to create either a Ribbon load-balancer or Spring Cloud LoadBalancer. Note that Ribbon is used as a default load-balancer, although it is deprecated now, and you should use Spring Cloud LoadBalancer instead.
+
+- Annotations used: @FeignClient
+
+- https://springframework.guru/feign-rest-client-for-spring-application/
+
+
+
+SLB vs Netflix Ribbon
+
+- 
+
+
+
+3.) At Deployment/Container Level (Docker/Kubernetes)
+
+- Kubernetes: By using Ingress and Ingress Controller. ( The Ingress Load Balancer )
+
+https://avinetworks.com/glossary/kubernetes-load-balancer/
+
+https://kubernetes.io/docs/concepts/services-networking/
+
+https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
+
+
+
+
+
+Interesting read:
+
+- https://howtodoinjava.com/spring-cloud/spring-boot-ribbon-eureka/
+
+- https://programming.vip/docs/can-ribbon-really-be-replaced-by-spring-cloud-loadbalancer.html
+
+- https://stackoverflow.com/questions/39587317/difference-between-ribbonclient-and-loadbalanced
